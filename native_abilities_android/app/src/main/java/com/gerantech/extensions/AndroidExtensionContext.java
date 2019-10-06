@@ -6,7 +6,7 @@ import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.gerantech.extensions.functions.CalendarFunction;
 import com.gerantech.extensions.functions.ChangeStatusFunction;
-import com.gerantech.extensions.functions.CheckInstallFunction;
+import com.gerantech.extensions.functions.InstallationFunction;
 import com.gerantech.extensions.functions.FullscreenFunction;
 import com.gerantech.extensions.functions.DeviceInfoFunction;
 import com.gerantech.extensions.functions.IntentFunction;
@@ -76,7 +76,7 @@ public class AndroidExtensionContext extends FREContext //implements ActivityRes
 		functionMap.put("getCalendarEvents", new CalendarFunction());
 		functionMap.put("changeStatusColor", new ChangeStatusFunction());
 		functionMap.put("sendSMS", new SMSFunction());
-		functionMap.put("checkInstalled", new CheckInstallFunction());
+		functionMap.put("installation", new InstallationFunction());
 		functionMap.put("requestPermission", new RequestPermissionFunction());
 		functionMap.put("fullscreen", new FullscreenFunction());
 		return functionMap;

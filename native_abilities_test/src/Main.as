@@ -64,30 +64,30 @@ package
 			vibrateBtn.addEventListener(MouseEvent.CLICK, vibrateBtn_clickHandler);
 			addChild(vibrateBtn);
 			
+			var checkInstallBtn:CustomButton = new CustomButton("Check Installation");
+			checkInstallBtn.y = 600;
+			checkInstallBtn.addEventListener(MouseEvent.CLICK, checkInstallBtn_clickHandler);
+			addChild(checkInstallBtn);
+			
 			var notifyBtn:CustomButton = new CustomButton("Schedule Notification");
-			notifyBtn.y = 600;
+			notifyBtn.y = 700;
 			notifyBtn.addEventListener(MouseEvent.CLICK, notifyBtn_clickHandler);
 			addChild(notifyBtn);
 			
 			var cnotifyBtn:CustomButton = new CustomButton("Cancel Notification");
-			cnotifyBtn.y = 700;
+			cnotifyBtn.y = 800;
 			cnotifyBtn.addEventListener(MouseEvent.CLICK, cnotifyBtn_clickHandler);
 			addChild(cnotifyBtn);
 			
 			var calBtn:CustomButton = new CustomButton("Calendar");
-			calBtn.y = 800;
+			calBtn.y = 900;
 			calBtn.addEventListener(MouseEvent.CLICK, calBtn_clickHandler);
 			addChild(calBtn);
 
 			var statusBtn:CustomButton = new CustomButton("Change Status Color");
-			statusBtn.y = 900;
+			statusBtn.y = 1000;
 			statusBtn.addEventListener(MouseEvent.CLICK, statusBtn_clickHandler);
 			addChild(statusBtn);
-			
-			var checkInstallBtn:CustomButton = new CustomButton("Check Installation");
-			checkInstallBtn.y = 1000;
-			checkInstallBtn.addEventListener(MouseEvent.CLICK, checkInstallBtn_clickHandler);
-			addChild(checkInstallBtn);
 			
 			var requestPermissionBtn:CustomButton = new CustomButton("Request PermissionBtn");
 			requestPermissionBtn.y = 1100;
@@ -215,9 +215,27 @@ package
 
 		protected function checkInstallBtn_clickHandler(event:MouseEvent):void
 		{
-			var apps:Vector.<String> = new <String>["com.farsitel.bazaar", "com.android.vending", "ir.mservices.market"];
-			var app:String = apps[Math.floor(Math.random() * apps.length)];
-			na.showToast(app + "=>" + na.checkInstalled(app), 0);
+			// var apps:Vector.<String> = new <String>["com.farsitel.bazaar", "com.android.vending", "ir.mservices.market"];
+			// var app:String = apps[Math.floor(Math.random() * apps.length)];
+
+			var installed:Array = na.getInstalled();
+			var filter:Array = "multipleaccounts,parallel,dualspace,ludashi,cloneapp,mochat,multiaccounts,trendmicro,cloner,multiapp,clone".split(",");
+			var res:String = "";
+			for each(var app:String in installed)
+			{
+				var found:String = findApp(app);
+				if( found != null )
+					res += found + "-";
+			}
+
+			function findApp(app:String):String
+			{
+				for each(var f:String in filter)
+					if( app.search(f) > -1 )
+						return app;
+				return null;
+			}
+			na.showToast(res, 0);
 		}
 
 		protected function requestPermissionBtn_clickHandler(event:MouseEvent):void

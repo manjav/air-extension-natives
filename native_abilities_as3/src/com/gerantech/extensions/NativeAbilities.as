@@ -176,7 +176,14 @@ package com.gerantech.extensions
 		{
 			if(!isAndroid)
 				return false;
-			return extContext.call("checkInstalled", packageName);
+			return extContext.call("installation", packageName);
+		}
+		
+		public function getInstalled():Array
+		{
+			if(!isAndroid)
+				return null;
+			return String(extContext.call("installation")).split(",");
 		}
 		
 		public function requestPermission(permission:String, code:int):Boolean
