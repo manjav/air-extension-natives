@@ -2,10 +2,10 @@
 bin/
 bin-debug/
 bin-release/
-[Oo]bj/ # FlashDevelop obj
-[Bb]in/ # FlashDevelop bin
-[Ff]iles/ # vscode files folder
-[Bb]ats/ # vscode bats folder
+[Oo]bj/
+[Bb]in/
+[Ff]iles/
+[Bb]ats/
 
 # Other files and folders
 .settings/
