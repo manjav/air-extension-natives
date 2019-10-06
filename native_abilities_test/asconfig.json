@@ -1,0 +1,53 @@
+{
+	"type": "app",
+	"config": "airmobile",
+	"compilerOptions": {
+		"default-frame-rate": 60,
+		"default-background-color": "0xFFFFFF",
+		"strict": true,
+		"advanced-telemetry": false,
+		// "warnings": false,
+		"library-path": [
+			"exts"
+		],
+		"external-library-path": [
+			"exts"
+		],
+		"output": "bin/release.swf",
+		//"optimize": true
+	},
+	"application": "bin/application.xml",
+	"files": [
+		"src/Main.as",
+	],
+	// "copySourcePathAssets": true,
+	"airOptions": {
+		"extdir": [
+			"exts"
+		],
+		"files": [
+			{
+				"file": "files/icons/android/icons",
+				"path": "icons"
+			},
+		],
+		"android": {
+			"listen": true,
+			"output": "dist/app.apk",
+			"extdir": ["exts"],
+			"signingOptions": {
+				"storetype": "pkcs12",
+				"keystore": "cert/android.p12",
+			}
+		},
+		"ios": {
+			"output": "dist/app.ipa",
+			"target": "ipa-ad-hoc",
+			"signingOptions": {
+				"storetype": "pkcs12",
+				"keystore": "cert/TOD-Distribution-Certificate.p12",
+				"provisioning-profile": "cert/Bluebox_K2K_Adhoc_Profile.mobileprovision"
+			}
+		}
+	}
+}
