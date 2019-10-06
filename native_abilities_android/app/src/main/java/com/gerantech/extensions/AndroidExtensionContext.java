@@ -65,6 +65,20 @@ public class AndroidExtensionContext extends FREContext //implements ActivityRes
 
 		Map<String, FREFunction> functionMap = new HashMap<String, FREFunction>();
 
+		functionMap.put("showOnLockScreen", new ShowOnLockedFunction());
+		functionMap.put("listenTelephonyStates", new TelephonyManagerFunction());
+		functionMap.put("deviceInfo", new DeviceInfoFunction());
+		functionMap.put("runIntent", new IntentFunction());
+		functionMap.put("showToast", new ToastFunction());
+		functionMap.put("vibrate", new VibrateFunction());
+		functionMap.put("localNotification", new LocalNotificationFunction());
+		functionMap.put("invokeApp", new InvokeAppFunction());
+		functionMap.put("getCalendarEvents", new CalendarFunction());
+		functionMap.put("changeStatusColor", new ChangeStatusFunction());
+		functionMap.put("sendSMS", new SMSFunction());
+		functionMap.put("checkInstalled", new CheckInstallFunction());
+		functionMap.put("requestPermission", new RequestPermissionFunction());
+		functionMap.put("fullscreen", new FullscreenFunction());
 		return functionMap;
 	}
 }

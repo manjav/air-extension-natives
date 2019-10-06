@@ -6,6 +6,7 @@ bin-release/
 [Bb]in/
 [Ff]iles/
 [Bb]ats/
+[Cc]ert/
 
 # Other files and folders
 .settings/
