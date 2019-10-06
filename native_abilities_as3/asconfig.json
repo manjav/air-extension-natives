@@ -9,6 +9,7 @@
 		"include-sources": [
 			"src"
 		],
+		"swf-version": 37,
 		"output": "bin/android_extension_as3_lib.swc"
 	}
 }
