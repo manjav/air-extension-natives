@@ -11,6 +11,7 @@ package
 	import flash.events.GeolocationEvent;
 	import flash.events.InvokeEvent;
 	import flash.events.MouseEvent;
+	import flash.filesystem.File;
 	import flash.sensors.Geolocation;
 	
 
@@ -19,12 +20,18 @@ package
 		private var na:NativeAbilities;
 		private var time:int = 1;
 		private var fullState:int;
-		
+		private var shareBtn:CustomButton;
+		public var file:File;
+
 		public function Main()
 		{
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			//stage.displayState = StageDisplayState.FULL_SCREEN;
+			
+			var f:File = File.applicationDirectory.resolvePath("assets");
+			file = File.applicationStorageDirectory.resolvePath("assets");
+			f.copyTo(file,  true);
 			
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, nativeApp_invokeHandler);
 			
@@ -64,33 +71,38 @@ package
 			vibrateBtn.addEventListener(MouseEvent.CLICK, vibrateBtn_clickHandler);
 			addChild(vibrateBtn);
 			
+			var md5Btn:CustomButton = new CustomButton("MD5");
+			md5Btn.y = 600;
+			md5Btn.addEventListener(MouseEvent.CLICK, md5Btn_clickHandler);
+			addChild(md5Btn);
+			
 			var checkInstallBtn:CustomButton = new CustomButton("Check Installation");
-			checkInstallBtn.y = 600;
+			checkInstallBtn.y = 700;
 			checkInstallBtn.addEventListener(MouseEvent.CLICK, checkInstallBtn_clickHandler);
 			addChild(checkInstallBtn);
 			
 			var notifyBtn:CustomButton = new CustomButton("Schedule Notification");
-			notifyBtn.y = 700;
+			notifyBtn.y = 800;
 			notifyBtn.addEventListener(MouseEvent.CLICK, notifyBtn_clickHandler);
 			addChild(notifyBtn);
 			
 			var cnotifyBtn:CustomButton = new CustomButton("Cancel Notification");
-			cnotifyBtn.y = 800;
+			cnotifyBtn.y = 900;
 			cnotifyBtn.addEventListener(MouseEvent.CLICK, cnotifyBtn_clickHandler);
 			addChild(cnotifyBtn);
 			
 			var calBtn:CustomButton = new CustomButton("Calendar");
-			calBtn.y = 900;
+			calBtn.y = 1000;
 			calBtn.addEventListener(MouseEvent.CLICK, calBtn_clickHandler);
 			addChild(calBtn);
 
 			var statusBtn:CustomButton = new CustomButton("Change Status Color");
-			statusBtn.y = 1000;
+			statusBtn.y = 1100;
 			statusBtn.addEventListener(MouseEvent.CLICK, statusBtn_clickHandler);
 			addChild(statusBtn);
 			
 			var requestPermissionBtn:CustomButton = new CustomButton("Request PermissionBtn");
-			requestPermissionBtn.y = 1100;
+			requestPermissionBtn.y = 1200;
 			requestPermissionBtn.addEventListener(MouseEvent.CLICK, requestPermissionBtn_clickHandler);
 			addChild(requestPermissionBtn);
 			
@@ -161,6 +173,11 @@ package
 			shareBtn.y = stage.stageHeight - 100;
 			time += 20;
 			na.vibrate(time);
+		}
+		
+		protected function md5Btn_clickHandler(event:MouseEvent):void
+		{
+			na.showToast(na.getMD5(file.nativePath), 2);
 		}
 		
 		protected function toastBtn_clickHandler(event:MouseEvent):void
@@ -271,7 +288,5 @@ package
 			// stage.width = Capabilities.screenResolutionX;
 
 		}
-
-		public var shareBtn:CustomButton;
 	}
 }

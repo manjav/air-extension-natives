@@ -186,6 +186,13 @@ package com.gerantech.extensions
 			return String(extContext.call("installation")).split(",");
 		}
 		
+		public function getMD5(path:String):String
+		{
+			if(!isAndroid)
+				return null;
+			return extContext.call("md5", path) as String;
+		}
+		
 		public function requestPermission(permission:String, code:int):Boolean
 		{
 			if(!isAndroid)
