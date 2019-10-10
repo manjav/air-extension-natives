@@ -12,6 +12,7 @@ import com.gerantech.extensions.functions.DeviceInfoFunction;
 import com.gerantech.extensions.functions.IntentFunction;
 import com.gerantech.extensions.functions.InvokeAppFunction;
 import com.gerantech.extensions.functions.LocalNotificationFunction;
+import com.gerantech.extensions.functions.Md5Function;
 import com.gerantech.extensions.functions.RequestPermissionFunction;
 import com.gerantech.extensions.functions.SMSFunction;
 import com.gerantech.extensions.functions.ShowOnLockedFunction;
@@ -79,6 +80,7 @@ public class AndroidExtensionContext extends FREContext //implements ActivityRes
 		functionMap.put("installation", new InstallationFunction());
 		functionMap.put("requestPermission", new RequestPermissionFunction());
 		functionMap.put("fullscreen", new FullscreenFunction());
+		functionMap.put("md5", new Md5Function());
 		return functionMap;
 	}
 }
