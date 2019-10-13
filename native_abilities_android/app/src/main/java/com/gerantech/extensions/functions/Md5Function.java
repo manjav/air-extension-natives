@@ -26,6 +26,7 @@ public class Md5Function implements FREFunction
 
 		FREObject ret = null;
 		try {
+			long t = System.currentTimeMillis();
 			File file = new File(args[0].getAsString());
 			if( file.isDirectory() )
 			{
@@ -36,6 +37,7 @@ public class Md5Function implements FREFunction
 					if( !files[i].isDirectory() )
 						out.append(files[i].getName() + ":" + getMd5(files[i]) + (i < len - 1 ? "," : ""));
 				ret = FREObject.newObject(out.toString());
+				Log.i(TAG, "Md5s are ready in " + (System.currentTimeMillis() - t));
 			}
 			else
 			{
