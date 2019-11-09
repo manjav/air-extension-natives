@@ -65,6 +65,11 @@ package com.gerantech.extensions
 			return _instance;
 		}
 		
+		public function getTimezone():String
+		{
+			return String(extContext.call("timezone", "getDefault"));
+		}
+		
 		public function showOnLockScreen():void 
 		{
 			if(!isAndroid)
