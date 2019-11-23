@@ -19,6 +19,7 @@ import com.gerantech.extensions.functions.ShowOnLockedFunction;
 import com.gerantech.extensions.functions.TelephonyManagerFunction;
 import com.gerantech.extensions.functions.ToastFunction;
 import com.gerantech.extensions.functions.VibrateFunction;
+import com.gerantech.extensions.functions.TimeZoneFunction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +82,7 @@ public class AndroidExtensionContext extends FREContext //implements ActivityRes
 		functionMap.put("requestPermission", new RequestPermissionFunction());
 		functionMap.put("fullscreen", new FullscreenFunction());
 		functionMap.put("md5", new Md5Function());
+		functionMap.put("timezone", new TimeZoneFunction());
 		return functionMap;
 	}
 }
